@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 
 @Component({
+    styleUrls: ['./src/css/puzzle.css'],
     selector: 'my-puzzle',
     template: `
 <section class="setup">
