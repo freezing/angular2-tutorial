@@ -1,5 +1,6 @@
 import {Component, Input, EventEmitter, Output} from "@angular/core";
 import {ListItem} from "./list-item";
+import {ShoppingListService} from "./shopping-list.service.td";
 
 @Component({
     selector: 'shopping-list-item',
@@ -21,9 +22,12 @@ import {ListItem} from "./list-item";
 export class ShoppingListItemComponent {
     @Input() item: ListItem;
 
-    @Output() removed = new EventEmitter<ListItem>();
+    @Output() removed = new EventEmitter<any>();
+
+    constructor(private _shoppingListService: ShoppingListService) {}
 
     onDelete() {
-        this.removed.emit(this.item);
+        this._shoppingListService.deleteItem(this.item);
+        this.removed.emit(null);
     }
 }
